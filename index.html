@@ -10,6 +10,7 @@
 		/>
 		<link rel="stylesheet" href="./css/styles.css" />
 		<link rel="stylesheet" href="./css/tablet.css" media="(min-width: 930px)" />
+		<script src="https://momentjs.com/downloads/moment.js"></script>
 	</head>
 	<body>
 		<header>
@@ -40,7 +41,7 @@
 							<p>Stellar</p>
 							<p>$4.98<span class="down"></span></p>
 						</div>
-						<p class="table-container--date"><b>Actualizado:</b> 19 Julio 23:45</p>
+						<p class="table-container--date"><b>Actualizado:</b> <span class="time-updated"></span></p>
 					</div>
 					<div class="table-container">
 						<h3 class="table-container--title table-container--title__blue">Comisiones</h3>
@@ -54,7 +55,7 @@
 							<p>Coinext</p>
 							<p>$14.98</p>
 						</div>
-						<p class="table-container--date table-container--date__blue"><b>Actualizado:</b> 19 Julio 23:48</p>
+						<p class="table-container--date table-container--date__blue"><b>Actualizado:</b> <span class="time-updated"></span></p>
 					</div>
 				</section>
 			</section>
@@ -146,4 +147,19 @@
 			</section>
 		</footer>
 	</body>
+	<script>
+		document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+
+				document.querySelector(this.getAttribute('href')).scrollIntoView({
+					behavior: 'smooth',
+				});
+			});
+		});
+
+		const timeUpdated = document.querySelectorAll('.time-updated').forEach((item) => {
+			item.innerHTML = moment().format('DD MMM HH:mm');
+		});
+	</script>
 </html>
